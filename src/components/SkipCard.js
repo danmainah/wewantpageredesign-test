@@ -16,81 +16,60 @@ const SkipCard = ({ skip }) => {
   // Use the size number directly for the image
   const imageUrl = `/${skip.size}-yarder-skip.jpg`;
 
-  const handleSelect = () => {
-    if (skip.id) {
-      dispatch(selectSkip(skip.id));
-    }
-  };
-
   return (
     <div
-      style={{
-        padding: '1.5rem',
-        borderRadius: '8px',
-        border: `2px solid ${isSelected ? '#2563eb' : '#e5e7eb'}`,
-        backgroundColor: isSelected ? '#eff6ff' : 'white',
-        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-        transition: 'all 0.2s ease'
-      }}
+      className={`card skip-card w-100 mb-3 ${isSelected ? 'selected border-success' : ''}`}
+      onClick={() => dispatch(selectSkip(skip.id))}
+      tabIndex={0}
+      style={{ outline: 'none' }}
+      onKeyPress={e => { if (e.key === 'Enter') dispatch(selectSkip(skip.id)); }}
     >
-      <img
-        src={imageUrl}
-        alt={`${skip.size} Yard Skip`}
-        style={{ 
-          width: '100%',
-          height: 150,
-          objectFit: 'contain',
-          marginBottom: '1rem'
-        }}
-        onError={(e) => {
-          console.warn(`Failed to load image: ${imageUrl}`);
-          e.target.onerror = null;
-          e.target.src = '/skip-placeholder.jpg';
-        }}
-      />
-      <h2 style={{ 
-        fontSize: '1.5rem',
-        fontWeight: '600',
-        marginBottom: '0.5rem'
-      }}>
-        {skip.size} Yard Skip
-      </h2>
-      <p style={{ color: '#4b5563', marginBottom: '0.5rem' }}>
-        {skip.hire_period_days} day hire
-      </p>
-      <p style={{ 
-        color: '#2563eb',
-        fontWeight: 'bold',
-        fontSize: '1.25rem',
-        marginBottom: '0.5rem'
-      }}>
-        £{skip.price_before_vat}
-      </p>
-      {!skip.allowed_on_road && (
-        <p style={{ 
-          color: '#dc2626',
-          fontSize: '0.875rem',
-          marginBottom: '0.5rem'
-        }}>
-          🚫 Not Allowed On The Road
-        </p>
-      )}
-      <button
-        onClick={handleSelect}
-        style={{
-          width: '100%',
-          padding: '0.75rem',
-          backgroundColor: isSelected ? '#059669' : '#2563eb',
-          color: 'white',
-          border: 'none',
-          borderRadius: '6px',
-          cursor: 'pointer',
-          fontWeight: '600',
-          transition: 'background-color 0.2s ease'
-        }}
-      >
-        {isSelected ? 'Selected ✓' : 'Select This Skip'}
-      </button>
+      <div className="position-relative">
+        <img
+          src={imageUrl}
+          alt={`${skip.size} Yard Skip`}
+          className="card-img-top"
+          style={{ height: 150, objectFit: 'contain', background: '#fff' }}
+          onError={e => {
+            e.target.onerror = null;
+            e.target.src = '/skip-placeholder.jpg';
+          }}
+        />
+        <span className="badge bg-success position-absolute top-0 end-0 m-2 fs-6 shadow">
+          {skip.size} Yards
+        </span>
+        {/* Not Allowed On The Road warning */}
+        {!skip.allowed_on_road && (
+          <div className="position-absolute bottom-0 start-0 m-2 bg-warning text-dark px-2 py-1 rounded d-flex align-items-center" style={{ fontWeight: 600, fontSize: '0.95rem' }}>
+            <span className="me-1">🚫</span> Not Allowed On The Road
+          </div>
+        )}
+      </div>
+      <div className="card-body text-center">
+        <h5 className="card-title">{skip.size} Yard Skip</h5>
+        <p className="card-text mb-1">{skip.hire_period_days} day hire</p>
+        <p className="card-text fw-bold text-success mb-2">£{skip.price_before_vat}</p>
+        <button
+          className={`btn skip-btn w-100 ${isSelected ? 'btn-success' : 'btn-outline-success'}`}
+          style={{
+            fontWeight: 600,
+            fontSize: '1.1rem',
+            letterSpacing: '0.01em',
+            boxShadow: isSelected ? '0 2px 8px rgba(34,197,94,0.15)' : undefined,
+            transition: 'box-shadow 0.2s'
+          }}
+        >
+          {isSelected ? (
+            <span>
+              Selected <span role="img" aria-label="tick">✅</span>
+            </span>
+          ) : (
+            <span>
+              Select This Skip <span role="img" aria-label="arrow">👉</span>
+            </span>
+          )}
+        </button>
+      </div>
     </div>
   );
 };

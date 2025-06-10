@@ -6,14 +6,14 @@ const SkipList = () => {
   const skips = useSelector((state) => state.skips.items);
 
   return (
-    <div style={{
-      display: 'grid',
-      gap: '1.5rem',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))'
-    }}>
-      {skips.map((skip) => (
-        <SkipCard key={skip.id} skip={skip} />
-      ))}
+    <div className="container">
+      <div className="row">
+        {skips.map((skip) => (
+          <div key={skip.id} className="col-12 col-sm-6 col-lg-3 mb-4 d-flex">
+            <SkipCard skip={skip} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

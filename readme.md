@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Skip Hire App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a single-page React application that allows users to browse and select skip hire options based on size, price, and availability. The goal is to redesign and modernize an existing skip hire page with an improved UI/UX while keeping the core functionality intact. The application uses Redux for state management and includes unit tests for components and functionality.
 
-## Available Scripts
+## Thought Process & Approach
 
-In the project directory, you can run:
+### 1. **Planning & Setup**
+- Chose `create-react-app` for familiarity and simplicity in bootstrapping the project.
+- Installed Redux Toolkit and React Redux for clean, maintainable state management.
+- Installed Testing Library tools to ensure all components and features work as expected.
 
-### `npm start`
+### 2. **Project Structure**
+- Created a modular folder structure with clear separation between components, store logic, static data, and tests.
+- Chose a single-page layout to meet project requirements but designed it to be easily extendable for future pages.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 3. **State Management**
+- Used Redux Toolkit to manage skip data and selected skip state.
+- Skip data is stored in a local JSON file to simulate API responses.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 4. **UI/UX Design**
+- Used Bootstrap for consistent styling and layout structure.
 
-### `npm test`
+- Focused on clean, responsive layout that works well on both mobile and desktop.
+- Redesigned visual elements from the original screenshot to look modern, with better spacing, typography, and visual hierarchy.
+- Created a component-based architecture using `SkipCard` and `SkipList`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 5. **Responsiveness & Accessibility**
+- Used responsive grid layouts with CSS and inline styles.
+- Ensured buttons and text are easily readable and clickable on mobile devices.
 
-### `npm run build`
+### 6. **Testing**
+- Set up unit tests using React Testing Library.
+- Ensured components render correctly, skip selection updates Redux state, and UI feedback reflects selection.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 7. **Image Generation**
+- Skips were visually recreated from the reference screenshot using AI image generation to maintain quality and consistency.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Technologies Used
+- React
+- Redux Toolkit
+- React Redux
+- JSON for data
+- React Testing Library
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Future Plans
+- Connect to a real backend or headless CMS.
+- Add animations and transition effects.
+- Support user authentication for order history.
+- Add a checkout and booking flow.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This README reflects the structure, decisions, and reasoning behind building the project in a maintainable, modern, and scalable way.
